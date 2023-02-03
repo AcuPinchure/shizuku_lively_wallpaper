@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .page_wrapper {
+            z-index: 0;
+            position: fixed;
+            width: 2000px;
+            height: 1000px;
+            background-image: url("assets/background/school3Day.jpg");
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: auto;
+        }
+
+        .hide {
+            display: none;
+        }
+
+        #sprite_wrapper {
+            z-index: 1;
+            position: fixed;
+            top: 20px;
+            left: 250px;
+            height: 100vh;
+            background-color: blue;
+        }
+
+        .sprite_img {
+            z-index: 2;
+            position: absolute;
+            height: 100vh;
+        }
+        .sprite_face {
+            position: absolute;
+            z-index: 3;
+            height: 100vh;
+        }
+        .sprite_head {
+            z-index: 4;
+            position: absolute;
+            top: 20%;
+            left: 35%;
+            width: 30%;
+            height: 18%;
+            /*background-color: red;*/
+        }
+        .sprite_chest {
+            z-index: 4;
+            position: absolute;
+            top: 40%;
+            left: 30%;
+            width: 45%;
+            height: 18%;
+            /*background-color: red;*/
+        }
+        .sprite_stomach {
+            z-index: 4;
+            position: absolute;
+            top: 58%;
+            left: 35%;
+            width: 35%;
+            height: 12%;
+            background-color: red;
+        }
+        .sprite_legs {
+            z-index: 4;
+            position: absolute;
+            top: 70%;
+            left: 32%;
+            width: 40%;
+            height: 30%;
+            /*background-color: red;*/
+        }
+
+        .text {
+            z-index: 10;
+            position: fixed;
+            height: 30vh;
+        }
+        .hand {
+            z-index: 2;
+            position: fixed;
+            width: 100px;
+        }
+    </style>
+</head>
+<body>
+    
+    <div class="text">
+        mouse: <br>
+        x: <span id="mouse_x"></span><br>
+        y: <span id="mouse_y"></span><br>
+        touch: <span id="touch_area"></span>
+    </div>
+
+    <div class="page_wrapper">
+        <div id="sprite_wrapper">
+            <div class="sprite_head"></div>
+            <div class="sprite_chest"></div>
+            <div class="sprite_stomach"></div>
+            <div class="sprite_legs"></div>
+            <img src="assets/sprite/dress/shizuku_uniform.png" class="sprite_img" alt="">
+            <img src="assets/sprite/face/shizuku_0015_default.png" class="sprite_face" id="default">
+            <img src="assets/sprite/face/shizuku_0014_default2.png" class="sprite_face" id="default2">
+            <img src="assets/sprite/face/shizuku_0013_default3.png" class="sprite_face" id="default3">
+        </div>
+    </div>
+    
+
+    <script>
+        var sprite = document.getElementById("sprite_wrapper");
+        var x_print = document.getElementById("mouse_x");
+        var y_print = document.getElementById("mouse_y");
+        var touch = document.getElementById("touch_area");
+        var page = document.querySelector(".page_wrapper");
+        var hand = document.querySelector(".hand");
+
+        var sprite_head = document.querySelector(".sprite_head");
+        var sprite_chest = document.querySelector(".sprite_chest");
+        var sprite_stomach = document.querySelector(".sprite_stomach");
+        var sprite_legs = document.querySelector(".sprite_legs");
+
+        var open = document.getElementById("default");
+        var half_close = document.getElementById("default2");
+        var close = document.getElementById("default3");
+
+        const scale = 0.05;
+        const window_h = 1920;
+        const window_v = 1080;
+
+        
+        window.addEventListener('mousemove', (event) => {
+            //console.log(event);
+            x_print.textContent = event.clientX;
+            y_print.textContent = event.clientY;
+            sprite.style.setProperty('top', `${20+event.clientY*scale*0.2}px`);
+            sprite.style.setProperty('left', `${250+event.clientX*scale*0.2}px`);
+            page.style.setProperty('top', `${(event.clientY-window_v)*scale}px`);
+            page.style.setProperty('left', `${(event.clientX-window_h)*scale}px`);
+            //hand.style.setProperty('top', `${event.clientY-50}px`);
+            //hand.style.setProperty('left', `${event.clientX-50}px`);
+        }, false);
+        
+
+        
+        sprite_head.addEventListener('mouseover', (event) => {
+            printTouch("head");
+        })
+        sprite_chest.addEventListener('mouseover', (event) => {
+            printTouch("chest");
+        })
+        sprite_stomach.addEventListener('mouseover', (event) => {
+            printTouch("stomach");
+        })
+        sprite_legs.addEventListener('mouseover', (event) => {
+            printTouch("legs");
+        })
+        sprite_head.addEventListener('mouseleave', (event) => {
+            printTouch("none");
+        })
+        sprite_chest.addEventListener('mouseleave', (event) => {
+            printTouch("none");
+        })
+        sprite_stomach.addEventListener('mouseleave', (event) => {
+            printTouch("none");
+        })
+        sprite_legs.addEventListener('mouseleave', (event) => {
+            printTouch("none");
+        })
+        
+
+        var test_blink = window.setInterval(randomBlink, 1000);
+
+
+        var blink_interval; 
+        var blink_counter;
+        
+        function randomBlink() {
+            if (Math.random() > 0.7) {
+                console.log('blink');
+                blinkAction();
+            }
+        }
+
+        function blinkAction() {
+            blink_counter = 0;
+            blink_interval = window.setInterval(displayBlink, 50);
+        }
+
+        function displayBlink() {
+            if (blink_counter===10) {
+                blink_counter = 0;
+                clearInterval(blink_interval);
+            }
+            else {
+                blink_counter ++;
+            }
+
+            switch (blink_counter) {
+                case 4:
+                    open.classList.add('hide');
+                    half_close.classList.remove('hide');
+                    close.classList.add('hide');
+                    break;
+                case 5:
+                    open.classList.add('hide');
+                    half_close.classList.add('hide');
+                    close.classList.remove('hide');
+                    break;
+                case 4:
+                    open.classList.add('hide');
+                    half_close.classList.remove('hide');
+                    close.classList.add('hide');
+                    break;
+                default:
+                    open.classList.remove('hide');
+                    half_close.classList.add('hide');
+                    close.classList.add('hide');
+                    break;
+            }
+        }
+        
+
+    </script>
+</body>
+</html>
