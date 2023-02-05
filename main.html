@@ -7,15 +7,11 @@
     <title>Document</title>
     <style>
 
-        .page_wrapper {
+        .bg_img {
             z-index: 0;
             position: fixed;
-            width: 2000px;
-            height: 1000px;
-            background-image: url("assets/background/school3Day.jpg");
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: auto;
+            width: 120vw;
+            height: 120vh;
         }
 
         .hide {
@@ -27,19 +23,20 @@
             position: fixed;
             top: 20px;
             left: 250px;
+            width: 50vh;
             height: 100vh;
-            background-color: blue;
+            /*background-color: blue;*/
         }
 
         .sprite_img {
             z-index: 2;
             position: absolute;
-            height: 100vh;
+            height: 100%;
         }
         .sprite_face {
             position: absolute;
             z-index: 3;
-            height: 100vh;
+            height: 100%;
         }
         .sprite_head {
             z-index: 4;
@@ -66,7 +63,7 @@
             left: 35%;
             width: 35%;
             height: 12%;
-            background-color: red;
+            /*background-color: red;*/
         }
         .sprite_legs {
             z-index: 4;
@@ -89,6 +86,7 @@
             width: 100px;
         }
     </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     
@@ -96,20 +94,19 @@
         mouse: <br>
         x: <span id="mouse_x"></span><br>
         y: <span id="mouse_y"></span><br>
-        touch: <span id="touch_area"></span>
+        touch: <span id="touch_area">none</span>
     </div>
 
-    <div class="page_wrapper">
-        <div id="sprite_wrapper">
-            <div class="sprite_head"></div>
-            <div class="sprite_chest"></div>
-            <div class="sprite_stomach"></div>
-            <div class="sprite_legs"></div>
-            <img src="assets/sprite/dress/shizuku_uniform.png" class="sprite_img" alt="">
-            <img src="assets/sprite/face/shizuku_0015_default.png" class="sprite_face" id="default">
-            <img src="assets/sprite/face/shizuku_0014_default2.png" class="sprite_face" id="default2">
-            <img src="assets/sprite/face/shizuku_0013_default3.png" class="sprite_face" id="default3">
-        </div>
+    <img src="assets/background/school3Day.jpg" alt="" class="bg_img">
+    <div id="sprite_wrapper">
+        <div class="sprite_head"></div>
+        <div class="sprite_chest"></div>
+        <div class="sprite_stomach"></div>
+        <div class="sprite_legs"></div>
+        <img src="assets/sprite/dress/shizuku_uniform.png" class="sprite_img" alt="">
+        <img src="assets/sprite/face/shizuku_0015_default.png" class="sprite_face" id="default">
+        <img src="assets/sprite/face/shizuku_0014_default2.png" class="sprite_face" id="default2">
+        <img src="assets/sprite/face/shizuku_0013_default3.png" class="sprite_face" id="default3">
     </div>
     
 
@@ -118,7 +115,7 @@
         var x_print = document.getElementById("mouse_x");
         var y_print = document.getElementById("mouse_y");
         var touch = document.getElementById("touch_area");
-        var page = document.querySelector(".page_wrapper");
+        var page = document.querySelector(".bg_img");
         var hand = document.querySelector(".hand");
 
         var sprite_head = document.querySelector(".sprite_head");
@@ -131,11 +128,11 @@
         var close = document.getElementById("default3");
 
         const scale = 0.01;
-        const window_h = 1920;
-        const window_v = 1080;
+        const window_h = window.innerWidth;
+        const window_v = window.innerWidth;
 
         
-        window.addEventListener('mousemove', (event) => {
+        window.addEventListener('pointermove', (event) => {
             //console.log(event);
             x_print.textContent = event.clientX;
             y_print.textContent = event.clientY;
@@ -143,37 +140,38 @@
             sprite.style.setProperty('left', `${250+event.clientX*scale*0.2}px`);
             page.style.setProperty('top', `${(event.clientY-window_v)*scale}px`);
             page.style.setProperty('left', `${(event.clientX-window_h)*scale}px`);
-            //hand.style.setProperty('top', `${event.clientY-50}px`);
-            //hand.style.setProperty('left', `${event.clientX-50}px`);
         }, false);
         
 
         
-        sprite_head.addEventListener('mouseover', (event) => {
+        sprite_head.addEventListener('pointerover', (event) => {
             printTouch("head");
         })
-        sprite_chest.addEventListener('mouseover', (event) => {
+        sprite_chest.addEventListener('pointerover', (event) => {
             printTouch("chest");
         })
-        sprite_stomach.addEventListener('mouseover', (event) => {
+        sprite_stomach.addEventListener('pointerover', (event) => {
             printTouch("stomach");
         })
-        sprite_legs.addEventListener('mouseover', (event) => {
+        sprite_legs.addEventListener('pointerover', (event) => {
             printTouch("legs");
         })
-        sprite_head.addEventListener('mouseleave', (event) => {
+        sprite_head.addEventListener('pointerleave', (event) => {
             printTouch("none");
         })
-        sprite_chest.addEventListener('mouseleave', (event) => {
+        sprite_chest.addEventListener('pointerleave', (event) => {
             printTouch("none");
         })
-        sprite_stomach.addEventListener('mouseleave', (event) => {
+        sprite_stomach.addEventListener('pointerleave', (event) => {
             printTouch("none");
         })
-        sprite_legs.addEventListener('mouseleave', (event) => {
+        sprite_legs.addEventListener('pointerleave', (event) => {
             printTouch("none");
         })
         
+        function printTouch(area) {
+            touch.textContent = area;
+        }
 
         var test_blink = window.setInterval(randomBlink, 1000);
 
@@ -183,7 +181,7 @@
         
         function randomBlink() {
             if (Math.random() > 0.7) {
-                console.log('blink');
+                //console.log('blink');
                 blinkAction();
             }
         }
