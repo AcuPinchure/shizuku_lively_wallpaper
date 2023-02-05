@@ -4,8 +4,29 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Shizuku</title>
     <style>
+
+        .button_wrapper {
+            position: fixed;
+            right: 0px;
+            bottom: 0px;
+            padding: 3vh;
+            z-index: 15;
+        }
+
+        .menu_wrapper {
+            position: fixed;
+            right: 0vw;
+            bottom: -100vh;
+            width: 60vw;
+            height: 100vh;
+            padding: 3vh;
+            z-index: 10;
+            overflow-y: scroll;
+            opacity: 0;
+            transition: bottom 0.6s cubic-bezier(.47,1.64,.41,.8), opacity 0.6s cubic-bezier(.47,1.64,.41,.8);
+        }
 
         .bg_img {
             z-index: 0;
@@ -75,10 +96,10 @@
             /*background-color: red;*/
         }
 
-        .text {
-            z-index: 10;
+        .debug_text {
+            z-index: 4;
             position: fixed;
-            height: 30vh;
+            padding: 1vh;
         }
         .hand {
             z-index: 2;
@@ -86,11 +107,171 @@
             width: 100px;
         }
     </style>
-    <link rel="stylesheet" href="style.css">
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js" integrity="sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
     
-    <div class="text">
+    <div class="button_wrapper">
+        <div class="ui buttons">
+            <div class="ui button" id="bg_button" onclick="showMenu('BG_menu');">背景</div>
+            <div class="ui button" id="dress_button" onclick="showMenu('dress_menu');">衣服</div>
+            <div class="ui button" id="face_button" onclick="showMenu('face_menu');">表情</div>
+        </div>
+    </div>
+
+    <div class="menu_wrapper" id="dress_menu">
+        <div class="ui segments">
+            <div class="ui blue inverted clearing segment">
+                <h3>
+                    服裝
+                    <i class="x icon" style="position:absolute; right: 1%;" onclick="hideMenu('dress_menu');"></i>
+                </h3>
+            </div>
+            <div class="ui segment">
+                <div class="ui six cards">
+                    <div class="ui card">
+                        <div class="image">
+                            <img src="assets/sprite/dress/shizuku_uniform.png" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="header">夏季制服</div>
+                            <div class="meta">School, Summer</div>
+                        </div>
+                        <div class="ui bottom attached button" onclick="setDress(this)">設定</div>
+                    </div>
+                    <div class="ui card">
+                        <div class="image">
+                            <img src="assets/sprite/dress/shizuku_winteruniform.png" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="header">冬季制服</div>
+                            <div class="meta">School, Winter</div>
+                        </div>
+                        <div class="ui bottom attached button" onclick="setDress(this)">設定</div>
+                    </div>
+                    <div class="ui card">
+                        <div class="image">
+                            <img src="assets/sprite/dress/shizuku_winteruniform2.png" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="header">制服外套</div>
+                            <div class="meta">School, Winter, Cold</div>
+                        </div>
+                        <div class="ui bottom attached button" onclick="setDress(this)">設定</div>
+                    </div>
+                    <div class="ui card">
+                        <div class="image">
+                            <img src="assets/sprite/dress/shizuku_heroine.png" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="header">表演服</div>
+                            <div class="meta">Club</div>
+                        </div>
+                        <div class="ui bottom attached button" onclick="setDress(this)">設定</div>
+                    </div>
+                    <div class="ui card">
+                        <div class="image">
+                            <img src="assets/sprite/dress/shizuku_training.png" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="header">夏練習服</div>
+                            <div class="meta">Club, Warm</div>
+                        </div>
+                        <div class="ui bottom attached button" onclick="setDress(this)">設定</div>
+                    </div>
+                    <div class="ui card">
+                        <div class="image">
+                            <img src="assets/sprite/dress/shizuku_training2.png" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="header">冬練習服</div>
+                            <div class="meta">Club, Cool</div>
+                        </div>
+                        <div class="ui bottom attached button" onclick="setDress(this)">設定</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="menu_wrapper" id="BG_menu">
+        <div class="ui segments">
+            <div class="ui blue inverted clearing segment">
+                <h3>
+                    背景
+                    <i class="x icon" style="position:absolute; right: 1%;" onclick="hideMenu('BG_menu');"></i>
+                </h3>
+            </div>
+            <div class="ui segment">
+                <div class="ui six cards">
+                    <div class="ui card">
+                        <div class="image">
+                            <img src="assets/background/amuseparkDay.jpg" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="header">遊樂園</div>
+                            <div class="meta">Day, Outdoor, Play</div>
+                        </div>
+                        <div class="ui bottom attached button" onclick="setBG(this)">設定</div>
+                    </div>
+                    <div class="ui card">
+                        <div class="image">
+                            <img src="assets/background/classDay.jpg" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="header">教室</div>
+                            <div class="meta">Day, Indoor, School</div>
+                        </div>
+                        <div class="ui bottom attached button" onclick="setBG(this)">設定</div>
+                    </div>
+                    <div class="ui card">
+                        <div class="image">
+                            <img src="assets/background/clubroomDay.jpg" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="header">部室</div>
+                            <div class="meta">Day, Indoor, Club</div>
+                        </div>
+                        <div class="ui bottom attached button" onclick="setBG(this)">設定</div>
+                    </div>
+                    <div class="ui card">
+                        <div class="image">
+                            <img src="assets/background/cafeNight.jpg" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="header">戶外Cafe</div>
+                            <div class="meta">Night, Indoor, Club</div>
+                        </div>
+                        <div class="ui bottom attached button" onclick="setBG(this)">設定</div>
+                    </div>
+                    <div class="ui card">
+                        <div class="image">
+                            <img src="assets/background/shizukuDay.jpg" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="header">しずく房間</div>
+                            <div class="meta">Day, Indoor, Home</div>
+                        </div>
+                        <div class="ui bottom attached button" onclick="setBG(this)">設定</div>
+                    </div>
+                    <div class="ui card">
+                        <div class="image">
+                            <img src="assets/background/school3Day.jpg" alt="">
+                        </div>
+                        <div class="content">
+                            <div class="header">鋼彈大樓</div>
+                            <div class="meta">Day, Outdoor, Street</div>
+                        </div>
+                        <div class="ui bottom attached button" onclick="setBG(this)">設定</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="debug_text">
         mouse: <br>
         x: <span id="mouse_x"></span><br>
         y: <span id="mouse_y"></span><br>
@@ -104,13 +285,42 @@
         <div class="sprite_stomach"></div>
         <div class="sprite_legs"></div>
         <img src="assets/sprite/dress/shizuku_uniform.png" class="sprite_img" alt="">
-        <img src="assets/sprite/face/shizuku_0015_default.png" class="sprite_face" id="default">
-        <img src="assets/sprite/face/shizuku_0014_default2.png" class="sprite_face" id="default2">
-        <img src="assets/sprite/face/shizuku_0013_default3.png" class="sprite_face" id="default3">
+        <img src="assets/sprite/face/shizuku_0013_default3.png" class="sprite_face" id="face_close">
+        <img src="assets/sprite/face/shizuku_0014_default2.png" class="sprite_face" id="face_half_close">
+        <img src="assets/sprite/face/shizuku_0015_default.png" class="sprite_face" id="face_open">
     </div>
-    
+
 
     <script>
+        var show_menu_id = "";
+        function showMenu(id) {
+            if (show_menu_id === "") {
+                let menu = document.getElementById(id);
+                menu.style.setProperty("bottom", "0vh");
+                menu.style.setProperty("opacity", "100");
+                show_menu_id = id;
+            }
+        }
+        function hideMenu(id) {
+            let menu = document.getElementById(id);
+            menu.style.setProperty("bottom", "-100vh");
+            menu.style.setProperty("opacity", "0");
+            show_menu_id = "";
+        }
+
+        function setBG(element) {
+            let card = element.parentElement;
+            let img_src = card.querySelector(".image img").src;
+            document.querySelector(".bg_img").src = img_src;
+        }
+
+        function setDress(element) {
+            let card = element.parentElement;
+            let img_src = card.querySelector(".image img").src;
+            document.querySelector(".sprite_img").src = img_src;
+        }
+
+
         var sprite = document.getElementById("sprite_wrapper");
         var x_print = document.getElementById("mouse_x");
         var y_print = document.getElementById("mouse_y");
@@ -123,9 +333,9 @@
         var sprite_stomach = document.querySelector(".sprite_stomach");
         var sprite_legs = document.querySelector(".sprite_legs");
 
-        var open = document.getElementById("default");
-        var half_close = document.getElementById("default2");
-        var close = document.getElementById("default3");
+        var open = document.getElementById("face_open");
+        var half_close = document.getElementById("face_half_close");
+        var close = document.getElementById("face_close");
 
         const scale = 0.01;
         const window_h = window.innerWidth;
@@ -134,8 +344,8 @@
         
         window.addEventListener('pointermove', (event) => {
             //console.log(event);
-            x_print.textContent = event.clientX;
-            y_print.textContent = event.clientY;
+            x_print.textContent = Math.round(event.clientX);
+            y_print.textContent = Math.round(event.clientY);
             sprite.style.setProperty('top', `${20+event.clientY*scale*0.2}px`);
             sprite.style.setProperty('left', `${250+event.clientX*scale*0.2}px`);
             page.style.setProperty('top', `${(event.clientY-window_v)*scale}px`);
@@ -180,8 +390,8 @@
         var blink_counter;
         
         function randomBlink() {
-            if (Math.random() > 0.7) {
-                //console.log('blink');
+            if (Math.random() > 0.8) {
+                console.log('blink');
                 blinkAction();
             }
         }
