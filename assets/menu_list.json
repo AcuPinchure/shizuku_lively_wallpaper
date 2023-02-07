@@ -1,0 +1,253 @@
+{
+    "BG": [
+        {
+            "type": "上課",
+            "list": [
+                {
+                    "name": "教室",
+                    "meta": "Class, Day",
+                    "file": "classDay"
+                },
+                {
+                    "name": "教室",
+                    "meta": "Class, Set",
+                    "file": "classSet"
+                },
+                {
+                    "name": "音樂教室",
+                    "meta": "Music Class, Day",
+                    "file": "mclassDay"
+                },
+                {
+                    "name": "走廊",
+                    "meta": "Walkway, Hall, Day",
+                    "file": "walkwayDay"
+                },
+                {
+                    "name": "走廊2",
+                    "meta": "Walkway, 1F",
+                    "file": "walkway2"
+                },
+                {
+                    "name": "走廊3",
+                    "meta": "Walkway, 2F",
+                    "file": "walkway3"
+                },
+                {
+                    "name": "走廊4",
+                    "meta": "Walkway, 3F",
+                    "file": "walkway4"
+                },
+                {
+                    "name": "走廊5",
+                    "meta": "Walkway, Council, Day",
+                    "file": "walkway5Day"
+                }
+            ]
+        }
+    ],
+    "dress": [
+        {
+            "type": "上課",
+            "list": [
+                {
+                    "name": "夏季制服",
+                    "meta": "Summer",
+                    "file": "shizuku_uniform"
+                },
+                {
+                    "name": "冬季制服",
+                    "meta": "Winter",
+                    "file": "shizuku_winteruniform"
+                },
+                {
+                    "name": "制服外套",
+                    "meta": "Winter, Cold",
+                    "file": "shizuku_winteruniform2"
+                }
+            ]
+        },
+        {
+            "type": "部活",
+            "list": [
+                {
+                    "name": "舞台服heroine",
+                    "meta": "",
+                    "file": "shizuku_heroine"
+                },
+                {
+                    "name": "夏訓練服",
+                    "meta": "Summer",
+                    "file": "shizuku_training"
+                },
+                {
+                    "name": "冬訓練服",
+                    "meta": "Winter",
+                    "file": "shizuku_training2"
+                }
+            ]
+        },
+        {
+            "type": "居家",
+            "list": [
+                {
+                    "name": "居家服(放髮)",
+                    "meta": "Cool",
+                    "file": "shizuku_home"
+                },
+                {
+                    "name": "居家服(綁髮)",
+                    "meta": "Warm",
+                    "file": "shizuku_home2"
+                }
+            ]
+        },
+        {
+            "type": "休閒",
+            "list": [
+                {
+                    "name": "私服",
+                    "meta": "",
+                    "file": "shizuku_casual"
+                },
+                {
+                    "name": "私服1",
+                    "meta": "",
+                    "file": "shizuku_casual1"
+                },
+                {
+                    "name": "私服2",
+                    "meta": "",
+                    "file": "shizuku_casual2"
+                },
+                {
+                    "name": "私服3",
+                    "meta": "",
+                    "file": "shizuku_casual3"
+                },
+                {
+                    "name": "私服4",
+                    "meta": "",
+                    "file": "shizuku_casual4"
+                },
+                {
+                    "name": "私服5",
+                    "meta": "",
+                    "file": "shizuku_casual5"
+                },
+                {
+                    "name": "私服6",
+                    "meta": "",
+                    "file": "shizuku_casual6"
+                },
+                {
+                    "name": "私服7",
+                    "meta": "",
+                    "file": "shizuku_casual7"
+                },
+                {
+                    "name": "私服8",
+                    "meta": "",
+                    "file": "shizuku_casual8"
+                },
+                {
+                    "name": "私服9",
+                    "meta": "",
+                    "file": "shizuku_casual9"
+                },
+                {
+                    "name": "私服10",
+                    "meta": "",
+                    "file": "shizuku_casual10"
+                },
+                {
+                    "name": "私服11",
+                    "meta": "",
+                    "file": "shizuku_casual11"
+                },
+                {
+                    "name": "私服12",
+                    "meta": "",
+                    "file": "shizuku_casual12"
+                },
+                {
+                    "name": "私服13",
+                    "meta": "",
+                    "file": "shizuku_casual13"
+                }
+            ]
+        },
+        {
+            "type": "玩樂",
+            "list": [
+                {
+                    "name": "溫泉浴衣",
+                    "meta": "Hot Spring",
+                    "file": "shizuku_onsen"
+                },
+                {
+                    "name": "禮服",
+                    "meta": "Party",
+                    "file": "shizuku_party"
+                },
+                {
+                    "name": "泳裝",
+                    "meta": "Beach",
+                    "file": "shizuku_swimsuit"
+                },
+                {
+                    "name": "泳裝1",
+                    "meta": "Beach",
+                    "file": "shizuku_swimsuit1"
+                },
+                {
+                    "name": "祭典服",
+                    "meta": "Taiko",
+                    "file": "shizuku_taiko"
+                },
+                {
+                    "name": "私服5(兔耳)",
+                    "meta": "Easter",
+                    "file": "shizuku_casual5_easter"
+                },
+                {
+                    "name": "聖誕泳裝",
+                    "meta": "Christmas",
+                    "file": "shizuku_christmas"
+                }
+            ]
+        }
+    ],
+    "face": [
+        {
+            "name": "正常",
+            "open": "shizuku_0015_default",
+            "half_close": "shizuku_0014_default2",
+            "close": "shizuku_0013_default3"
+        },
+        {
+            "name": "生氣",
+            "open": "shizuku_0003_angry",
+            "half_close": "shizuku_0002_angry2",
+            "close": "shizuku_0001_angry3"
+        },
+        {
+            "name": "驚訝",
+            "open": "shizuku_0006_shock",
+            "half_close": "shizuku_0005_shock2",
+            "close": "shizuku_0004_shock3"
+        },
+        {
+            "name": "高興",
+            "open": "shizuku_0009_glad",
+            "half_close": "shizuku_0008_glad2",
+            "close": "shizuku_0007_glad3"
+        },
+        {
+            "name": "傷心",
+            "open": "shizuku_0012_sad",
+            "half_close": "shizuku_0011_sad2",
+            "close": "shizuku_0010_sad3"
+        }
+    ]
+}

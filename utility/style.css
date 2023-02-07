@@ -1,0 +1,99 @@
+.button_wrapper {
+    position: fixed;
+    right: 0vw;
+    bottom: 5vh;
+    padding: 3vh;
+    z-index: 15;
+}
+
+.menu_wrapper {
+    position: fixed;
+    right: 0vw;
+    bottom: -100vh;
+    width: 60vw;
+    height: 100vh;
+    padding: 3vh;
+    z-index: 10;
+    overflow-y: scroll;
+    opacity: 0;
+    transition: bottom 0.4s ease, opacity 0.4s ease;
+}
+
+.bg_img {
+    z-index: 0;
+    position: fixed;
+    width: 120vw;
+    height: 120vh;
+}
+
+.hide {
+    display: none;
+}
+
+#sprite_wrapper {
+    z-index: 1;
+    position: fixed;
+    top: 20px;
+    left: 250px;
+    width: 50vh;
+    height: 100vh;
+    /*background-color: blue;*/
+}
+
+.sprite_img {
+    z-index: 2;
+    position: absolute;
+    height: 100%;
+}
+.sprite_face {
+    position: absolute;
+    z-index: 3;
+    height: 100%;
+}
+.sprite_head {
+    z-index: 4;
+    position: absolute;
+    top: 20%;
+    left: 35%;
+    width: 30%;
+    height: 18%;
+    /*background-color: red;*/
+}
+.sprite_chest {
+    z-index: 4;
+    position: absolute;
+    top: 40%;
+    left: 30%;
+    width: 45%;
+    height: 18%;
+    /*background-color: red;*/
+}
+.sprite_stomach {
+    z-index: 4;
+    position: absolute;
+    top: 58%;
+    left: 35%;
+    width: 35%;
+    height: 12%;
+    /*background-color: red;*/
+}
+.sprite_legs {
+    z-index: 4;
+    position: absolute;
+    top: 70%;
+    left: 32%;
+    width: 40%;
+    height: 30%;
+    /*background-color: red;*/
+}
+
+.debug_text {
+    z-index: 4;
+    position: fixed;
+    padding: 1vh;
+}
+.hand {
+    z-index: 2;
+    position: fixed;
+    width: 100px;
+}

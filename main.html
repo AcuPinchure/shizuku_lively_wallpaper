@@ -5,119 +5,17 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shizuku</title>
-    <style>
-
-        .button_wrapper {
-            position: fixed;
-            right: 0px;
-            bottom: 0px;
-            padding: 3vh;
-            z-index: 15;
-        }
-
-        .menu_wrapper {
-            position: fixed;
-            right: 0vw;
-            bottom: -100vh;
-            width: 60vw;
-            height: 100vh;
-            padding: 3vh;
-            z-index: 10;
-            overflow-y: scroll;
-            opacity: 0;
-            transition: bottom 0.6s cubic-bezier(.47,1.64,.41,.8), opacity 0.6s cubic-bezier(.47,1.64,.41,.8);
-        }
-
-        .bg_img {
-            z-index: 0;
-            position: fixed;
-            width: 120vw;
-            height: 120vh;
-        }
-
-        .hide {
-            display: none;
-        }
-
-        #sprite_wrapper {
-            z-index: 1;
-            position: fixed;
-            top: 20px;
-            left: 250px;
-            width: 50vh;
-            height: 100vh;
-            /*background-color: blue;*/
-        }
-
-        .sprite_img {
-            z-index: 2;
-            position: absolute;
-            height: 100%;
-        }
-        .sprite_face {
-            position: absolute;
-            z-index: 3;
-            height: 100%;
-        }
-        .sprite_head {
-            z-index: 4;
-            position: absolute;
-            top: 20%;
-            left: 35%;
-            width: 30%;
-            height: 18%;
-            /*background-color: red;*/
-        }
-        .sprite_chest {
-            z-index: 4;
-            position: absolute;
-            top: 40%;
-            left: 30%;
-            width: 45%;
-            height: 18%;
-            /*background-color: red;*/
-        }
-        .sprite_stomach {
-            z-index: 4;
-            position: absolute;
-            top: 58%;
-            left: 35%;
-            width: 35%;
-            height: 12%;
-            /*background-color: red;*/
-        }
-        .sprite_legs {
-            z-index: 4;
-            position: absolute;
-            top: 70%;
-            left: 32%;
-            width: 40%;
-            height: 30%;
-            /*background-color: red;*/
-        }
-
-        .debug_text {
-            z-index: 4;
-            position: fixed;
-            padding: 1vh;
-        }
-        .hand {
-            z-index: 2;
-            position: fixed;
-            width: 100px;
-        }
-    </style>
+    <link rel="stylesheet" href="utility/style.css">
     <script src="https://code.jquery.com/jquery-3.6.3.min.js" integrity="sha256-pvPw+upLPUjgMXY0G+8O0xUf+/Im1MZjXxxgOcBQBXU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.js" integrity="sha512-Xo0Jh8MsOn72LGV8kU5LsclG7SUzJsWGhXbWcYs2MAmChkQzwiW/yTQwdJ8w6UA9C6EVG18GHb/TrYpYCjyAQw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.5.0/semantic.min.css" integrity="sha512-KXol4x3sVoO+8ZsWPFI/r5KBVB/ssCGB5tsv2nVOKwLg33wTFP3fmnXa47FdSVIshVTgsYk/1734xSk9aFIa4A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
-    
     <div class="button_wrapper">
         <div class="ui buttons">
-            <div class="ui button" id="bg_button" onclick="showMenu('BG_menu');">背景</div>
-            <div class="ui button" id="dress_button" onclick="showMenu('dress_menu');">衣服</div>
-            <div class="ui button" id="face_button" onclick="showMenu('face_menu');">表情</div>
+            <div class="ui button" id="bg_button" onclick="switchMenu('BG_menu');">背景</div>
+            <div class="ui button" id="dress_button" onclick="switchMenu('dress_menu');">衣服</div>
+            <div class="ui button" id="face_button" onclick="switchMenu('face_menu');">表情</div>
         </div>
     </div>
 
@@ -129,70 +27,7 @@
                     <i class="x icon" style="position:absolute; right: 1%;" onclick="hideMenu('dress_menu');"></i>
                 </h3>
             </div>
-            <div class="ui segment">
-                <div class="ui six cards">
-                    <div class="ui card">
-                        <div class="image">
-                            <img src="assets/sprite/dress/shizuku_uniform.png" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="header">夏季制服</div>
-                            <div class="meta">School, Summer</div>
-                        </div>
-                        <div class="ui bottom attached button" onclick="setDress(this)">設定</div>
-                    </div>
-                    <div class="ui card">
-                        <div class="image">
-                            <img src="assets/sprite/dress/shizuku_winteruniform.png" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="header">冬季制服</div>
-                            <div class="meta">School, Winter</div>
-                        </div>
-                        <div class="ui bottom attached button" onclick="setDress(this)">設定</div>
-                    </div>
-                    <div class="ui card">
-                        <div class="image">
-                            <img src="assets/sprite/dress/shizuku_winteruniform2.png" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="header">制服外套</div>
-                            <div class="meta">School, Winter, Cold</div>
-                        </div>
-                        <div class="ui bottom attached button" onclick="setDress(this)">設定</div>
-                    </div>
-                    <div class="ui card">
-                        <div class="image">
-                            <img src="assets/sprite/dress/shizuku_heroine.png" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="header">表演服</div>
-                            <div class="meta">Club</div>
-                        </div>
-                        <div class="ui bottom attached button" onclick="setDress(this)">設定</div>
-                    </div>
-                    <div class="ui card">
-                        <div class="image">
-                            <img src="assets/sprite/dress/shizuku_training.png" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="header">夏練習服</div>
-                            <div class="meta">Club, Warm</div>
-                        </div>
-                        <div class="ui bottom attached button" onclick="setDress(this)">設定</div>
-                    </div>
-                    <div class="ui card">
-                        <div class="image">
-                            <img src="assets/sprite/dress/shizuku_training2.png" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="header">冬練習服</div>
-                            <div class="meta">Club, Cool</div>
-                        </div>
-                        <div class="ui bottom attached button" onclick="setDress(this)">設定</div>
-                    </div>
-                </div>
-            </div>
+            <div class="ui segment" id="dress_list"></div>
         </div>
     </div>
 
@@ -204,70 +39,7 @@
                     <i class="x icon" style="position:absolute; right: 1%;" onclick="hideMenu('BG_menu');"></i>
                 </h3>
             </div>
-            <div class="ui segment">
-                <div class="ui six cards">
-                    <div class="ui card">
-                        <div class="image">
-                            <img src="assets/background/amuseparkDay.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="header">遊樂園</div>
-                            <div class="meta">Day, Outdoor, Play</div>
-                        </div>
-                        <div class="ui bottom attached button" onclick="setBG(this)">設定</div>
-                    </div>
-                    <div class="ui card">
-                        <div class="image">
-                            <img src="assets/background/classDay.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="header">教室</div>
-                            <div class="meta">Day, Indoor, School</div>
-                        </div>
-                        <div class="ui bottom attached button" onclick="setBG(this)">設定</div>
-                    </div>
-                    <div class="ui card">
-                        <div class="image">
-                            <img src="assets/background/clubroomDay.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="header">部室</div>
-                            <div class="meta">Day, Indoor, Club</div>
-                        </div>
-                        <div class="ui bottom attached button" onclick="setBG(this)">設定</div>
-                    </div>
-                    <div class="ui card">
-                        <div class="image">
-                            <img src="assets/background/cafeNight.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="header">戶外Cafe</div>
-                            <div class="meta">Night, Indoor, Club</div>
-                        </div>
-                        <div class="ui bottom attached button" onclick="setBG(this)">設定</div>
-                    </div>
-                    <div class="ui card">
-                        <div class="image">
-                            <img src="assets/background/shizukuDay.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="header">しずく房間</div>
-                            <div class="meta">Day, Indoor, Home</div>
-                        </div>
-                        <div class="ui bottom attached button" onclick="setBG(this)">設定</div>
-                    </div>
-                    <div class="ui card">
-                        <div class="image">
-                            <img src="assets/background/school3Day.jpg" alt="">
-                        </div>
-                        <div class="content">
-                            <div class="header">鋼彈大樓</div>
-                            <div class="meta">Day, Outdoor, Street</div>
-                        </div>
-                        <div class="ui bottom attached button" onclick="setBG(this)">設定</div>
-                    </div>
-                </div>
-            </div>
+            <div class="ui segment" id="BG_list"></div>
         </div>
     </div>
     
@@ -290,151 +62,262 @@
         <img src="assets/sprite/face/shizuku_0015_default.png" class="sprite_face" id="face_open">
     </div>
 
+    <script src="utility/utility.js"></script>
 
-    <script>
-        var show_menu_id = "";
-        function showMenu(id) {
-            if (show_menu_id === "") {
-                let menu = document.getElementById(id);
-                menu.style.setProperty("bottom", "0vh");
-                menu.style.setProperty("opacity", "100");
-                show_menu_id = id;
-            }
+    <div id="menu_data">
+        {
+            "BG": [
+                {
+                    "type": "上課",
+                    "list": [
+                        {
+                            "name": "教室",
+                            "meta": "Class, Day",
+                            "file": "classDay"
+                        },
+                        {
+                            "name": "教室",
+                            "meta": "Class, Set",
+                            "file": "classSet"
+                        },
+                        {
+                            "name": "音樂教室",
+                            "meta": "Music Class, Day",
+                            "file": "mclassDay"
+                        },
+                        {
+                            "name": "走廊",
+                            "meta": "Walkway, Hall, Day",
+                            "file": "walkwayDay"
+                        },
+                        {
+                            "name": "走廊2",
+                            "meta": "Walkway, 1F",
+                            "file": "walkway2"
+                        },
+                        {
+                            "name": "走廊3",
+                            "meta": "Walkway, 2F",
+                            "file": "walkway3"
+                        },
+                        {
+                            "name": "走廊4",
+                            "meta": "Walkway, 3F",
+                            "file": "walkway4"
+                        },
+                        {
+                            "name": "走廊5",
+                            "meta": "Walkway, Council, Day",
+                            "file": "walkway5Day"
+                        }
+                    ]
+                }
+            ],
+            "dress": [
+                {
+                    "type": "上課",
+                    "list": [
+                        {
+                            "name": "夏季制服",
+                            "meta": "Summer",
+                            "file": "shizuku_uniform"
+                        },
+                        {
+                            "name": "冬季制服",
+                            "meta": "Winter",
+                            "file": "shizuku_winteruniform"
+                        },
+                        {
+                            "name": "制服外套",
+                            "meta": "Winter, Cold",
+                            "file": "shizuku_winteruniform2"
+                        }
+                    ]
+                },
+                {
+                    "type": "部活",
+                    "list": [
+                        {
+                            "name": "舞台服heroine",
+                            "meta": "",
+                            "file": "shizuku_heroine"
+                        },
+                        {
+                            "name": "夏訓練服",
+                            "meta": "Summer",
+                            "file": "shizuku_training"
+                        },
+                        {
+                            "name": "冬訓練服",
+                            "meta": "Winter",
+                            "file": "shizuku_training2"
+                        }
+                    ]
+                },
+                {
+                    "type": "居家",
+                    "list": [
+                        {
+                            "name": "居家服(放髮)",
+                            "meta": "Cool",
+                            "file": "shizuku_home"
+                        },
+                        {
+                            "name": "居家服(綁髮)",
+                            "meta": "Warm",
+                            "file": "shizuku_home2"
+                        }
+                    ]
+                },
+                {
+                    "type": "休閒",
+                    "list": [
+                        {
+                            "name": "私服",
+                            "meta": "",
+                            "file": "shizuku_casual"
+                        },
+                        {
+                            "name": "私服1",
+                            "meta": "",
+                            "file": "shizuku_casual1"
+                        },
+                        {
+                            "name": "私服2",
+                            "meta": "",
+                            "file": "shizuku_casual2"
+                        },
+                        {
+                            "name": "私服3",
+                            "meta": "",
+                            "file": "shizuku_casual3"
+                        },
+                        {
+                            "name": "私服4",
+                            "meta": "",
+                            "file": "shizuku_casual4"
+                        },
+                        {
+                            "name": "私服5",
+                            "meta": "",
+                            "file": "shizuku_casual5"
+                        },
+                        {
+                            "name": "私服6",
+                            "meta": "",
+                            "file": "shizuku_casual6"
+                        },
+                        {
+                            "name": "私服7",
+                            "meta": "",
+                            "file": "shizuku_casual7"
+                        },
+                        {
+                            "name": "私服8",
+                            "meta": "",
+                            "file": "shizuku_casual8"
+                        },
+                        {
+                            "name": "私服9",
+                            "meta": "",
+                            "file": "shizuku_casual9"
+                        },
+                        {
+                            "name": "私服10",
+                            "meta": "",
+                            "file": "shizuku_casual10"
+                        },
+                        {
+                            "name": "私服11",
+                            "meta": "",
+                            "file": "shizuku_casual11"
+                        },
+                        {
+                            "name": "私服12",
+                            "meta": "",
+                            "file": "shizuku_casual12"
+                        },
+                        {
+                            "name": "私服13",
+                            "meta": "",
+                            "file": "shizuku_casual13"
+                        }
+                    ]
+                },
+                {
+                    "type": "玩樂",
+                    "list": [
+                        {
+                            "name": "溫泉浴衣",
+                            "meta": "Hot Spring",
+                            "file": "shizuku_onsen"
+                        },
+                        {
+                            "name": "禮服",
+                            "meta": "Party",
+                            "file": "shizuku_party"
+                        },
+                        {
+                            "name": "泳裝",
+                            "meta": "Beach",
+                            "file": "shizuku_swimsuit"
+                        },
+                        {
+                            "name": "泳裝1",
+                            "meta": "Beach",
+                            "file": "shizuku_swimsuit1"
+                        },
+                        {
+                            "name": "祭典服",
+                            "meta": "Taiko",
+                            "file": "shizuku_taiko"
+                        },
+                        {
+                            "name": "私服5(兔耳)",
+                            "meta": "Easter",
+                            "file": "shizuku_casual5_easter"
+                        },
+                        {
+                            "name": "聖誕泳裝",
+                            "meta": "Christmas",
+                            "file": "shizuku_christmas"
+                        }
+                    ]
+                }
+            ],
+            "face": [
+                {
+                    "name": "正常",
+                    "open": "shizuku_0015_default",
+                    "half_close": "shizuku_0014_default2",
+                    "close": "shizuku_0013_default3"
+                },
+                {
+                    "name": "生氣",
+                    "open": "shizuku_0003_angry",
+                    "half_close": "shizuku_0002_angry2",
+                    "close": "shizuku_0001_angry3"
+                },
+                {
+                    "name": "驚訝",
+                    "open": "shizuku_0006_shock",
+                    "half_close": "shizuku_0005_shock2",
+                    "close": "shizuku_0004_shock3"
+                },
+                {
+                    "name": "高興",
+                    "open": "shizuku_0009_glad",
+                    "half_close": "shizuku_0008_glad2",
+                    "close": "shizuku_0007_glad3"
+                },
+                {
+                    "name": "傷心",
+                    "open": "shizuku_0012_sad",
+                    "half_close": "shizuku_0011_sad2",
+                    "close": "shizuku_0010_sad3"
+                }
+            ]
         }
-        function hideMenu(id) {
-            let menu = document.getElementById(id);
-            menu.style.setProperty("bottom", "-100vh");
-            menu.style.setProperty("opacity", "0");
-            show_menu_id = "";
-        }
-
-        function setBG(element) {
-            let card = element.parentElement;
-            let img_src = card.querySelector(".image img").src;
-            document.querySelector(".bg_img").src = img_src;
-        }
-
-        function setDress(element) {
-            let card = element.parentElement;
-            let img_src = card.querySelector(".image img").src;
-            document.querySelector(".sprite_img").src = img_src;
-        }
-
-
-        var sprite = document.getElementById("sprite_wrapper");
-        var x_print = document.getElementById("mouse_x");
-        var y_print = document.getElementById("mouse_y");
-        var touch = document.getElementById("touch_area");
-        var page = document.querySelector(".bg_img");
-        var hand = document.querySelector(".hand");
-
-        var sprite_head = document.querySelector(".sprite_head");
-        var sprite_chest = document.querySelector(".sprite_chest");
-        var sprite_stomach = document.querySelector(".sprite_stomach");
-        var sprite_legs = document.querySelector(".sprite_legs");
-
-        var open = document.getElementById("face_open");
-        var half_close = document.getElementById("face_half_close");
-        var close = document.getElementById("face_close");
-
-        const scale = 0.01;
-        const window_h = window.innerWidth;
-        const window_v = window.innerWidth;
-
-        
-        window.addEventListener('pointermove', (event) => {
-            //console.log(event);
-            x_print.textContent = Math.round(event.clientX);
-            y_print.textContent = Math.round(event.clientY);
-            sprite.style.setProperty('top', `${20+event.clientY*scale*0.2}px`);
-            sprite.style.setProperty('left', `${250+event.clientX*scale*0.2}px`);
-            page.style.setProperty('top', `${(event.clientY-window_v)*scale}px`);
-            page.style.setProperty('left', `${(event.clientX-window_h)*scale}px`);
-        }, false);
-        
-
-        
-        sprite_head.addEventListener('pointerover', (event) => {
-            printTouch("head");
-        })
-        sprite_chest.addEventListener('pointerover', (event) => {
-            printTouch("chest");
-        })
-        sprite_stomach.addEventListener('pointerover', (event) => {
-            printTouch("stomach");
-        })
-        sprite_legs.addEventListener('pointerover', (event) => {
-            printTouch("legs");
-        })
-        sprite_head.addEventListener('pointerleave', (event) => {
-            printTouch("none");
-        })
-        sprite_chest.addEventListener('pointerleave', (event) => {
-            printTouch("none");
-        })
-        sprite_stomach.addEventListener('pointerleave', (event) => {
-            printTouch("none");
-        })
-        sprite_legs.addEventListener('pointerleave', (event) => {
-            printTouch("none");
-        })
-        
-        function printTouch(area) {
-            touch.textContent = area;
-        }
-
-        var test_blink = window.setInterval(randomBlink, 1000);
-
-
-        var blink_interval; 
-        var blink_counter;
-        
-        function randomBlink() {
-            if (Math.random() > 0.8) {
-                console.log('blink');
-                blinkAction();
-            }
-        }
-
-        function blinkAction() {
-            blink_counter = 0;
-            blink_interval = window.setInterval(displayBlink, 50);
-        }
-
-        function displayBlink() {
-            if (blink_counter===10) {
-                blink_counter = 0;
-                clearInterval(blink_interval);
-            }
-            else {
-                blink_counter ++;
-            }
-
-            switch (blink_counter) {
-                case 4:
-                    open.classList.add('hide');
-                    half_close.classList.remove('hide');
-                    close.classList.add('hide');
-                    break;
-                case 5:
-                    open.classList.add('hide');
-                    half_close.classList.add('hide');
-                    close.classList.remove('hide');
-                    break;
-                case 4:
-                    open.classList.add('hide');
-                    half_close.classList.remove('hide');
-                    close.classList.add('hide');
-                    break;
-                default:
-                    open.classList.remove('hide');
-                    half_close.classList.add('hide');
-                    close.classList.add('hide');
-                    break;
-            }
-        }
-        
-
-    </script>
+    </div>
 </body>
 </html>
