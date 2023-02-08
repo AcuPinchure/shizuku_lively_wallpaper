@@ -4,16 +4,16 @@ function switchMenu(id) {
     switch (id) {
         case "BG_menu":
             hideMenu("dress_menu");
-            //hideMenu("face_menu");
+            hideMenu("face_menu");
             break;
         case "dress_menu":
             hideMenu("BG_menu");
-            //hideMenu("face_menu");
+            hideMenu("face_menu");
             break;
-        /*case "face_menu":
+        case "face_menu":
             hideMenu("dress_menu");
             hideMenu("BG_menu");
-            break;*/
+            break;
     }
     showMenu(id);
 }
@@ -44,6 +44,17 @@ function setDress(element) {
     let img_src = card.querySelector(".image img").src;
     document.querySelector(".sprite_img").src = img_src.replace("thumbnail/", "");
 }
+
+function setFace(element) {
+    let card = element.parentElement;
+    let img_src_open = card.querySelector(".content .face_open").value;
+    let img_src_half_close = card.querySelector(".content .face_half_close").value;
+    let img_src_close = card.querySelector(".content .face_close").value;
+    document.querySelector("#face_open").src = `assets/sprite/face/${img_src_open}.png`;
+    document.querySelector("#face_half_close").src = `assets/sprite/face/${img_src_half_close}.png`;
+    document.querySelector("#face_close").src = `assets/sprite/face/${img_src_close}.png`;
+}
+
 
 function printTouch(area) {
     let touch = document.getElementById("touch_area");
@@ -215,7 +226,28 @@ window.onload = () => {
         `;
     }
     
-    
+    // load face_menu
+    var face_list = document.getElementById("face_list");
+    let cards_html = "";
+    for (let face of menu_data.face) {
+        cards_html += `
+        <div class="ui card">
+            <div class="content">
+                <div class="header">${face.name}</div>
+                <input type="hidden" name="" class="face_open" value="${face.open}">
+                <input type="hidden" name="" class="face_half_close" value="${face.half_close}">
+                <input type="hidden" name="" class="face_close" value="${face.close}">
+            </div>
+            <div class="ui bottom attached button" onclick="setFace(this)">設定</div>
+        </div>
+        `;
+        
+    }
+    face_list.innerHTML = `
+        <div class="ui five cards">
+            ${cards_html}
+        </div>
+    `;
 
 }
 

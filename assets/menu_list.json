@@ -42,6 +42,86 @@
                     "name": "走廊5",
                     "meta": "Walkway, Council, Day",
                     "file": "walkway5Day"
+                },
+                {
+                    "name": "學生食堂",
+                    "meta": "Lunch, Day",
+                    "file": "food3Day"
+                },
+                {
+                    "name": "學生會室",
+                    "meta": "Council, 3F",
+                    "file": "councilDay"
+                },
+                {
+                    "name": "保健室",
+                    "meta": "Nurse, Day",
+                    "file": "nurseDay"
+                },
+                {
+                    "name": "學生食堂",
+                    "meta": "Lunch, Day",
+                    "file": "food3Day"
+                }
+            ]
+        },
+        {
+            "type": "部活",
+            "list": [
+                {
+                    "name": "部室",
+                    "meta": "Club, Day",
+                    "file": "clubroomDay"
+                },
+                {
+                    "name": "部室",
+                    "meta": "Club, Set",
+                    "file": "clubroomSet"
+                },
+                {
+                    "name": "部室",
+                    "meta": "Club, Night",
+                    "file": "clubroomNight"
+                },
+                {
+                    "name": "練習室",
+                    "meta": "Training, Day",
+                    "file": "trainingDay"
+                },
+                {
+                    "name": "練習室",
+                    "meta": "Training, Set",
+                    "file": "trainingSet"
+                },
+                {
+                    "name": "練習室",
+                    "meta": "Training, Night",
+                    "file": "trainingNight"
+                }
+            ]
+        },
+        {
+            "type": "居家",
+            "list": [
+                {
+                    "name": "房間",
+                    "meta": "Home, Day",
+                    "file": "roomDay"
+                },
+                {
+                    "name": "房間",
+                    "meta": "Home, Set",
+                    "file": "roomSet"
+                },
+                {
+                    "name": "房間",
+                    "meta": "Home, Night",
+                    "file": "roomNight"
+                },
+                {
+                    "name": "房間",
+                    "meta": "Home, Sleep",
+                    "file": "roomSleep"
                 }
             ]
         }

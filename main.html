@@ -42,6 +42,30 @@
             <div class="ui segment list_area" id="BG_list"></div>
         </div>
     </div>
+
+    <div class="menu_wrapper" id="face_menu">
+        <div class="ui segments">
+            <div class="ui blue inverted clearing segment">
+                <h3>
+                    表情
+                    <i class="x icon" style="position:absolute; right: 1%;" onclick="hideMenu('face_menu');"></i>
+                </h3>
+            </div>
+            <div class="ui segment list_area" id="face_list">
+                <div class="ui six cards">
+                    <div class="ui card">
+                        <div class="content">
+                            <div class="header">開心</div>
+                            <input type="hidden" name="open" class="face_open" value="">
+                            <input type="hidden" name="open" class="face_half_close" value="">
+                            <input type="hidden" name="open" class="face_close" value="">
+                        </div>
+                        <div class="ui bottom attached button" onclick="setFace(this)">設定</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
     <div class="debug_text">
         mouse: <br>
@@ -109,51 +133,86 @@
                             "name": "走廊5",
                             "meta": "Walkway, Council, Day",
                             "file": "walkway5Day"
+                        },
+                        {
+                            "name": "學生食堂",
+                            "meta": "Lunch, Day",
+                            "file": "food3Day"
+                        },
+                        {
+                            "name": "學生會室",
+                            "meta": "Council, 3F",
+                            "file": "councilDay"
+                        },
+                        {
+                            "name": "保健室",
+                            "meta": "Nurse, Day",
+                            "file": "nurseDay"
+                        },
+                        {
+                            "name": "學生食堂",
+                            "meta": "Lunch, Day",
+                            "file": "food3Day"
                         }
                     ]
                 },
                 {
-                    "type": "上課",
+                    "type": "部活",
                     "list": [
                         {
-                            "name": "教室",
-                            "meta": "Class, Day",
-                            "file": "classDay"
+                            "name": "部室",
+                            "meta": "Club, Day",
+                            "file": "clubroomDay"
                         },
                         {
-                            "name": "教室",
-                            "meta": "Class, Set",
-                            "file": "classSet"
+                            "name": "部室",
+                            "meta": "Club, Set",
+                            "file": "clubroomSet"
                         },
                         {
-                            "name": "音樂教室",
-                            "meta": "Music Class, Day",
-                            "file": "mclassDay"
+                            "name": "部室",
+                            "meta": "Club, Night",
+                            "file": "clubroomNight"
                         },
                         {
-                            "name": "走廊",
-                            "meta": "Walkway, Hall, Day",
-                            "file": "walkwayDay"
+                            "name": "練習室",
+                            "meta": "Training, Day",
+                            "file": "trainingDay"
                         },
                         {
-                            "name": "走廊2",
-                            "meta": "Walkway, 1F",
-                            "file": "walkway2"
+                            "name": "練習室",
+                            "meta": "Training, Set",
+                            "file": "trainingSet"
                         },
                         {
-                            "name": "走廊3",
-                            "meta": "Walkway, 2F",
-                            "file": "walkway3"
+                            "name": "練習室",
+                            "meta": "Training, Night",
+                            "file": "trainingNight"
+                        }
+                    ]
+                },
+                {
+                    "type": "居家",
+                    "list": [
+                        {
+                            "name": "房間",
+                            "meta": "Home, Day",
+                            "file": "roomDay"
                         },
                         {
-                            "name": "走廊4",
-                            "meta": "Walkway, 3F",
-                            "file": "walkway4"
+                            "name": "房間",
+                            "meta": "Home, Set",
+                            "file": "roomSet"
                         },
                         {
-                            "name": "走廊5",
-                            "meta": "Walkway, Council, Day",
-                            "file": "walkway5Day"
+                            "name": "房間",
+                            "meta": "Home, Night",
+                            "file": "roomNight"
+                        },
+                        {
+                            "name": "房間",
+                            "meta": "Home, Sleep",
+                            "file": "roomSleep"
                         }
                     ]
                 }
